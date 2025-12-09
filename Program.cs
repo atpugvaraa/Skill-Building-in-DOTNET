@@ -10,46 +10,46 @@ namespace SkillBuilding {
         readonly static HttpClient client = new HttpClient();
 
         private const string baseURL = "https://api.testknock.com/api";
-        // {route}/question/${version}/${subTopicRoute}
+        // /{route}/question/${version}/${subTopicRoute}
 
         static async Task Main(string[] args) {
             // Expanded Master List based on the Syllabus Analysis
-var targets = new List<(string Topic, string SubTopic)> {
-    // --- QUANTITATIVE APTITUDE (Math) ---
-    ("QUANTITATIVE_APTITUDE", "NUMBER_SYSTEM"),       // Divisibility, Remainders
-    ("QUANTITATIVE_APTITUDE", "PERCENTAGE"),          // Basic % calculation
-    ("QUANTITATIVE_APTITUDE", "PROFIT_AND_LOSS"),     // Discounts, Markups
-    ("QUANTITATIVE_APTITUDE", "S.I_AND_C.I"),         // Interest problems (Special route handled)
-    ("QUANTITATIVE_APTITUDE", "RATIO_AND_PROPORTION"),// Mixtures, Ages
-    ("QUANTITATIVE_APTITUDE", "AVERAGES"),            // Weighted averages
-    ("QUANTITATIVE_APTITUDE", "TIME_SPEED_AND_DISTANCE"), // Trains, Boats
-    ("QUANTITATIVE_APTITUDE", "TIME_AND_WORK"),       // Efficiency problems
-    ("QUANTITATIVE_APTITUDE", "PERMUTATION_AND_COMBINATION"), // Arrangements
-    ("QUANTITATIVE_APTITUDE", "PROBABILITY"),         // Dice, Cards
+            var targets = new List<(string Topic, string SubTopic)> {
+                // --- QUANTITATIVE APTITUDE (Math) ---
+                ("QUANTITATIVE_APTITUDE", "NUMBER_SYSTEM"),       // Divisibility, Remainders
+                ("QUANTITATIVE_APTITUDE", "PERCENTAGE"),          // Basic % calculation
+                ("QUANTITATIVE_APTITUDE", "PROFIT_AND_LOSS"),     // Discounts, Markups
+                ("QUANTITATIVE_APTITUDE", "S.I_AND_C.I"),         // Interest problems (Special route handled)
+                ("QUANTITATIVE_APTITUDE", "RATIO_AND_PROPORTION"),// Mixtures, Ages
+                ("QUANTITATIVE_APTITUDE", "AVERAGES"),            // Weighted averages
+                ("QUANTITATIVE_APTITUDE", "TIME_SPEED_AND_DISTANCE"), // Trains, Boats
+                ("QUANTITATIVE_APTITUDE", "TIME_AND_WORK"),       // Efficiency problems
+                ("QUANTITATIVE_APTITUDE", "PERMUTATION_AND_COMBINATION"), // Arrangements
+                ("QUANTITATIVE_APTITUDE", "PROBABILITY"),         // Dice, Cards
 
-    // --- LOGICAL REASONING ---
-    ("LOGICAL_REASONING", "SYLLOGISM"),               // Logic (All cats are dogs...)
-    ("LOGICAL_REASONING", "BLOOD_RELATIONS"),         // Family tree
-    ("LOGICAL_REASONING", "CODING_DECODING"),         // "ROPE" = 6821
-    ("LOGICAL_REASONING", "NUMBER_OR_ALPHABET_SERIES"), // Missing terms
-    ("LOGICAL_REASONING", "DIRECTION_SENSE"),         // North/South walks
-    ("LOGICAL_REASONING", "ARRANGEMENTS"),            // Seating arrangements (Circular/Linear)
-    ("LOGICAL_REASONING", "DATA_SUFFICIENCY"),        // Is data enough to answer?
+                // --- LOGICAL REASONING ---
+                ("LOGICAL_REASONING", "SYLLOGISM"),               // Logic (All cats are dogs...)
+                ("LOGICAL_REASONING", "BLOOD_RELATIONS"),         // Family tree
+                ("LOGICAL_REASONING", "CODING_DECODING"),         // "ROPE" = 6821
+                ("LOGICAL_REASONING", "NUMBER_OR_ALPHABET_SERIES"), // Missing terms
+                ("LOGICAL_REASONING", "DIRECTION_SENSE"),         // North/South walks
+                ("LOGICAL_REASONING", "ARRANGEMENTS"),            // Seating arrangements (Circular/Linear)
+                ("LOGICAL_REASONING", "DATA_SUFFICIENCY"),        // Is data enough to answer?
 
-    // --- VERBAL ABILITY ---
-    ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "READING_COMPREHENSION"), // Long passages
-    ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "SYNONYMS"),              // Vocab
-    ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "ANTONYMS"),              // Vocab
-    ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "SENTENCE_CORRECTION"),   // Grammar
-    ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "IDIOMS_AND_PHRASES"),    // Vocab
-    ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "ONE_WORD_SUBSTITUTION"), // Vocab
-    ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "PARA_JUMBLES"),          // Reordering sentences
-    
-    // --- DATA INTERPRETATION ---
-    ("DATA_INTERPRETATION", "TABLE_CHARTS"),
-    ("DATA_INTERPRETATION", "BAR_GRAPHS"),
-    ("DATA_INTERPRETATION", "PIE_CHARTS")
-    };
+                // --- VERBAL ABILITY ---
+                ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "READING_COMPREHENSION"), // Long passages
+                ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "SYNONYMS"),              // Vocab
+                ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "ANTONYMS"),              // Vocab
+                ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "SENTENCE_CORRECTION"),   // Grammar
+                ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "IDIOMS_AND_PHRASES"),    // Vocab
+                ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "ONE_WORD_SUBSTITUTION"), // Vocab
+                ("VERBAL_ABILITY_AND_READING_COMPREHENSION", "PARA_JUMBLES"),          // Reordering sentences
+                
+                // --- DATA INTERPRETATION ---
+                ("DATA_INTERPRETATION", "TABLE_CHARTS"),
+                ("DATA_INTERPRETATION", "BAR_GRAPHS"),
+                ("DATA_INTERPRETATION", "PIE_CHARTS")
+            };
 
             foreach (var (topic, subTopic) in targets) {
                 await FetchQuestions(topic, subTopic);
